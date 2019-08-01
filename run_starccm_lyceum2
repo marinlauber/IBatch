@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -S /bin/bash
+# Script to run a Starccm+ job 
+
+# set default resource requirements for job (this is for a 24 hour job)
+# - these can be overridden on the qsub command line 
+#PBS -l walltime=24:00:00 
+# request all 16 processor-cores on 4 nodes (64 processors in total)
+#PBS -l nodes=4:ppn=16
+# request memory (total memory do not change)
+#PBS -l mem=64000mb
+
+# use starccm module to set up the environment for starccm+
+module load starccm
+
+# Change to directory from which job was submitted.
+cd $PBS_O_WORKDIR
+
+# Run starccm+ using simulation file, "rotatemeshrun.java" to be adjusted for correct rotation
+starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch rotatemeshrun.java > "FILE_NAME"_out.txt 

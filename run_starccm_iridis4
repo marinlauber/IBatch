@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -S /bin/bash
+# Script to run a Starccm+ job 
+
+# set default resource requirements for job (this is for a 60 hour job)
+# - these can be overridden on the qsub command line 
+#PBS -l walltime=60:00:00 
+# request 254 processor-cores
+#PBS -l nodes=16:ppn=16
+# request memory (total memory)
+#PBS -l mem=64000mb
+
+# use starccm module to set up the environment for starccm+
+module load starccm/12.0.4
+
+# Change to directory from which job was submitted.
+cd $PBS_O_WORKDIR
+
+# Run starccm+ using simulation file
+starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch -rsh rsh > "FILE_NAME"_out.txt
