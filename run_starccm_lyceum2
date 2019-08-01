@@ -16,5 +16,5 @@ module load starccm
 # Change to directory from which job was submitted.
 cd $PBS_O_WORKDIR
 
-# Run starccm+ using simulation file, "rotatemeshrun.java" to be adjusted for correct rotation
-starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch rotatemeshrun.java > "FILE_NAME"_out.txt 
+# Run starccm+ using simulation file, "meshrun.java" allow to mesh here
+starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch meshrun.java > "FILE_NAME"_out.txt 
