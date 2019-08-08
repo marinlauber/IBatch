@@ -1,14 +1,16 @@
-#!/bin/bash
-#PBS -S /bin/bash -login
+#!/bin/bash -login
+#PBS -S /bin/bash
 
-# Job script to run mpi job in parallel. The line above loads your bash profile into the computational node (required to run Lotus). To run other applications the -login flag is not required.
+# Job script to run mpi job in parallel. The line above loads your bash profile into the computational node
+# (required to run Lotus). To run other applications the -login flag is not required.
 
 # Number of processors (Iridis 4 has ppn=16 max)
 #PBS -l nodes=1:ppn=8
-# walltime
+# walltime hh:mm:ss (Iridis 4 allows for 60:00:00)
 #PBS -l walltime=00:10:00
 # job name
 #PBS -N test
+# send an email when job starts/ends
 #PBS -m abe
 
 # Load required modules so that the commands at the computational node are found
