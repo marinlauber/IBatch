@@ -17,6 +17,7 @@ module load binutils/2.26
 module load openmpi/1.8.3/gcc
 module load gcc/6.1.0
 module load R/3.3.0
+module load imagemagick
 
 # Change to directory from which job was submitted
 cd $PBS_O_WORKDIR
