@@ -20,7 +20,7 @@ or from Iridis to local machine (at current location):
 Send a batch job on the queue:
 
 ```
-  qsub subLotus
+  qsub subLotus (or pyrun, etc.)
 ```
 
 Query status of jobs:
