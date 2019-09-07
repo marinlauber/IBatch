@@ -69,7 +69,7 @@ $ du -h dir/
   319M	dir/dat1x3x0
   260M	dir/dat0x0x0
   318M	dir/dat1x0x0
-  95M	  dir/render
+  95M	dir/render
   5.1G	dir/
 $
 ```
