@@ -74,6 +74,11 @@ $ du -h dir/
 $
 ```
 
+Show user quota in the home and scratch folder on Iridis 4
+```
+  mmlsquota --block-size=G home scratch
+ ```
+
 Generate video from a collection of images, using ```ffmpeg```. Assuming a list of pic0001.png, pic0002.png, ..., pic%04d.png that we want to transform in a video called test.mp4. Can adjust the frame rate (```-r fps```)
 
 ```
