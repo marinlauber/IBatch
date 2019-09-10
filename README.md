@@ -84,3 +84,13 @@ Generate video from a collection of images, using ```ffmpeg```. Assuming a list 
 ```
   ffmpeg -r 30 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p test.mp4
 ```
+
+## Saving Figures from matplotlib
+
+In order to be able to generate figures using matplotlib in Iridis4 we need to specify the AGG backend, otherwise matplotlib is going to look for a `$DISPLAY` to show the figure. This is done as follows
+```
+  import matplotlib
+  matplotlib.use('Agg')
+  import matplotlib.pyplot as plt
+```
+Which must be placed on the first line of your `main.py` file.
