@@ -29,7 +29,7 @@ Query status of jobs:
   qstat
 ```
 
-Can also use the ```watch``` comman, which refreshes the command every 2 seconds.
+Can also use the ```watch``` command, which refreshes the command every 2 seconds.
 
 Look at the queue (running only):
 
