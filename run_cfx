@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -S /bin/bash
+# Torque job script to run CFX solver in parallel on a single node 
+
+# set default resource requirements for job 
+# (4 cores on 1 node requesting 3 hours 30 minutes of runtime)
+# - these can be overridden on the qsub command line  
+#PBS -l nodes=2:ppn=16
+#PBS -l walltime=00:01:00
+
+#Change to directory from which job was submitted
+cd $PBS_O_WORKDIR
+
+# set number of processors to run on 
+# (list of node names is in file $PBS_NODEFILE)
+nodes=`cat $PBS_NODEFILE`
+# remove spaces and put commas instead
+nodes=`echo $nodes | sed -e 's/ /,/g'`
+
+# load cfx module so that we find the cfxsolve command
+module load cfx
+
+# run in double precision
+cfx5solve -batch -double -def FILE_NAME.def  -par-dist $nodes -parallel -start-method "Platform MPI Distributed Parallel"
