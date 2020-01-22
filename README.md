@@ -94,3 +94,17 @@ In order to be able to generate figures using matplotlib in Iridis4 we need to s
   import matplotlib.pyplot as plt
 ```
 Which must be placed on the first line of your `main.py` file.
+
+## Ansys CFX Batch
+
+Ansys CFX uses `ssh` to communicate between nodes by default, for this the ssh connections need to be made without having to enter a password. To create `ssh` keys to connect to internal cluster nodes you have to:
+
+1. Generate the keys
+```
+  sss-keygen
+```
+2. add the generated keys to the list of authorized keys
+```
+cd ~/.ssh && cat id_rsa.pub >> authorized_keys
+```
+This will the allow you to run the `qsub run_cfx` script.
