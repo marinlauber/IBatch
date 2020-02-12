@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --time=20:00:00
+#SBATCH --ntasks-per-node=48
+#SBATCH --nodes=1
+#SBATCH --partition=ngcm
+#SBATCH --mail-type=ALL
+
+# load python
+module load starccm/13.04
+
+#Change to the directory that the job was submitted from
+cd $HOME/starccm
+
+#Run the python job from the working directory
+starccm+ -batchsystem pbs -load hull_bare-upright.sim -batch > hull_bare-upright_out.txt
