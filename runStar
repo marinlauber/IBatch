@@ -12,4 +12,4 @@ module load starccm/13.04
 cd $HOME/starccm
 
 #Run the python job from the working directory
-starccm+ -batchsystem pbs -load hull_bare-upright.sim -batch > hull_bare-upright_out.txt
+starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch > "FILE_NAME"_out.txt
