@@ -1,15 +1,20 @@
 #!/bin/bash
-#SBATCH --time=20:00:00
-#SBATCH --ntasks-per-node=48
+
+#SBATCH --job-name=starccm
 #SBATCH --nodes=1
-#SBATCH --partition=ngcm
-#SBATCH --mail-type=ALL
+#SBATCH --ntasks-per-node=40
+#SBATCH --time=15:00:00
+#SBATCH --mem=170000
+#SBTACH --partition=ngcm
 
-# load python
-module load starccm/13.04
+#SBATCH -o output_file.o
+#SBATCH -e error_file.e
 
-#Change to the directory that the job was submitted from
-cd $HOME/starccm
+cd $SLURM_SUBMIT_DIR
 
-#Run the python job from the working directory
-starccm+ -batchsystem pbs -load "FILE_NAME".sim -batch > "FILE_NAME"_out.txt
+module load starccm
+
+NCORE=40
+
+#Run the job from the working directory
+starccm+ -batch -np $NCORE -load "file_name".sim -batch meshandrun.java  >> "file_name".txt
