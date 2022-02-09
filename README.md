@@ -84,6 +84,12 @@ Generate video from a collection of images, using ```ffmpeg```. Assuming a list 
 ```
   ffmpeg -r 30 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p test.mp4
 ```
+To make a `gif` from this `mp4` file, use
+```
+ffmpeg -i input.mp4 -vf "fps=16,scale=160:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=32:reserve_transparent=0[p];[s1][p]paletteuse" -loop 0 output.gif
+```
+where we have limited the number of colrs used to save space.
+
 
 ## Saving Figures from matplotlib
 
