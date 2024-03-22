@@ -49,7 +49,7 @@ To query the size of a certain directory, use the command
   du -h dir/
 ```
 
-which return disk usage (```du```) in a human-readable format (```-h```) of the particular directory. A standard input would be
+which returns disk usage (```du```) in a human-readable format (```-h```) of the particular directory. A standard input would be
 ```
 $ du -h dir/
   32K	dir/datp
@@ -79,7 +79,7 @@ Show user quota in the home and scratch folder on Iridis 4
   mmlsquota --block-size=G home scratch
  ```
 
-Generate video from a collection of images, using ```ffmpeg```. Assuming a list of pic0001.png, pic0002.png, ..., pic%04d.png that we want to transform in a video called test.mp4. Can adjust the frame rate (```-r fps```)
+Generate video from a collection of images using ```ffmpeg```. Assuming a list of pic0001.png, pic0002.png, ..., pic%04d.png that we want to transform in a video called test.mp4. Can adjust the frame rate (```-r fps```)
 
 ```
   ffmpeg -r 30 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p test.mp4
@@ -88,12 +88,14 @@ To make a `gif` from this `mp4` file, use
 ```
 ffmpeg -i input.mp4 -vf "fps=16,scale=160:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=32:reserve_transparent=0[p];[s1][p]paletteuse" -loop 0 output.gif
 ```
-where we have limited the number of colrs used to save space.
-
+where we have limited the number of colors used to save space.
+```
+ffmpeg -i %06d.png -vf "fps=10,scale=-1:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=32:reserve_transparent=0[p];[s1][p]paletteuse" -loop 0 falling_fillament.gif
+```
 
 ## Saving Figures from matplotlib
 
-In order to be able to generate figures using matplotlib in Iridis4 we need to specify the AGG backend, otherwise matplotlib is going to look for a `$DISPLAY` to show the figure. This is done as follows
+In order to be able to generate figures using matplotlib in Iridis4, we need to specify the AGG backend. Otherwise, matplotlib will look for a `$DISPLAY` to show the figure. This is done as follows
 ```
   import matplotlib
   matplotlib.use('Agg')
